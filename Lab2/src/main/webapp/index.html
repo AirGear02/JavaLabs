@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Сформувати запит</title>
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+</head>
+<body>
+<h4 class="text-center mt-4">Дробот Андрій Васильович</h4>
+<h5 class="text-center mt-3">Варіант 12</h5>
+<form action="/books">
+    <div class="container mt-5">
+        <div class="form-group row justify-content-center">
+            <label class="col-sm-2 col-form-label" for="year">
+                Рік книги
+            </label>
+            <div class="col-sm-1">
+                <select name="operator" class="form-control">
+                    <option value=">" selected> > </option>
+                    <option value="<"> < </option>
+                </select>
+            </div>
+            <div class="col-sm-3">
+                <input name="year" type="number" min="0" max="2022" class="form-control" id="year">
+            </div>
+        </div>
+        <div class="form-group row justify-content-center">
+            <label class="col-sm-2 col-form-label" for="sort">
+                Сортувати за назвою
+            </label>
+            <div class="col-sm-4">
+                <select name="order" class="form-control" id="sort">
+                    <option selected></option>
+                    <option value="asc">В алфавітному порядку</option>
+                    <option value="desc">В оберененому порядку</option>
+                </select>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-4">
+            <input type="submit" value="Сформувати запит" class="btn btn-primary justify-content-center">
+        </div>
+    </div>
+</form>
+</body>
+</html>
