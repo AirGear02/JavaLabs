@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head th:replace="fragments/head-section :: head (metaTitle='Головна сторінка')"></head>
+<body>
+<nav th:replace="fragments/header :: header"></nav>
+<div class="container align-items-center">
+    <div class="card mb-3 main-page-dish" th:each="dish, iStat : ${dishPage}">
+        <img class="card-img-top" th:src="@{'/dish-photos/' + ${dish.photoPath}}" alt="Card image cap"
+            width="890" height="190" style="object-fit: cover"
+        >
+        <div class="container">
+            <div class="card-body text-info row justify-content-center align-self-center">
+                <div class="col-8">
+                    <h5 class="card-title" th:text="${dish.title}"></h5>
+                    <p class="card-text" th:text="${dish.description}"></p>
+                </div>
+                <div class="col-4 align-self-center">
+                    <form method="POST" th:action="@{/orders}" class="text-right" sec:authorize="hasAuthority('USER')">
+                        <input type="hidden" name="dishId" th:value="${dish.id}">
+                        <input type="submit" class="btn btn-outline-info mr-5" value="Замовити">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<nav th:if="${dishPage.totalPages > 0}" class="container align-items-center paginator">
+    <ul class="pagination">
+        <li th:if="${dishPage.number + 1 <=1}" class="page-item disabled">
+            <span class="page-link">Назад</span>
+        </li>
+        <li th:if="${dishPage.number + 1>1}" class="page-item">
+            <a class="page-link" th:href="@{/(size=${dishPage.size}, page=${dishPage.number})}">
+                Назад
+            </a>
+        </li>
+        <li th:each="pageNumber : ${pageNumbers}"
+            th:class="'page-item ' + ${pageNumber == (dishPage.number + 1) ? 'active' : ''}">
+
+            <a class="page-link"
+               th:href="@{/(size=${dishPage.size}, page=${pageNumber})}"
+               th:text="${pageNumber}">
+            </a>
+        </li>
+        <li th:if="${(dishPage.number + 1) >= dishPage.totalPages}" class="page-item disabled">
+            <span class="page-link">Далі</span>
+        </li>
+        <li th:if="${(dishPage.number + 1) < dishPage.totalPages}"
+                th:class="'page-item'">
+            <a class="page-link" th:href="@{/(size=${dishPage.size}, page=${dishPage.number + 2})}">
+                Далі
+            </a>
+        </li>
+    </ul>
+</nav>
+</body>
+</html>

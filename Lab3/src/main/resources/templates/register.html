@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head-section :: head (metaTitle='Реєстрація')"></head>
+<body>
+<nav th:replace="fragments/header :: header"></nav>
+<div class="container text-center mt-5">
+    <h1 class="text-center">Реєстрація</h1>
+    <form class="mt-5" th:action="@{/register}" method="post" th:object="${user}">
+        <div class="form-group row justify-content-center">
+            <label class="col-sm-2 col-form-label text-left">Ім'я</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="firstName" th:field="*{firstName}">
+            </div>
+        </div>
+        <div class="form-group row justify-content-center">
+            <label class="col-sm-2 col-form-label text-left">Прізвище</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="lastName" th:field="*{lastName}">
+            </div>
+        </div>
+        <div class="form-group row justify-content-center">
+            <label class="col-sm-2 col-form-label text-left">Еклектронна пошта</label>
+            <div class="col-sm-3">
+                <input type="email" class="form-control" id="email" th:field="*{email}">
+            </div>
+        </div>
+        <div class="form-group row justify-content-center">
+            <label class="col-sm-2 col-form-label text-left">Пароль</label>
+            <div class="col-sm-3">
+                <input type="password" class="form-control" id="password" th:field="*{password}">
+            </div>
+        </div>
+        <div class="row justify-content-center mt-4">
+            <input type="submit" value="Зареєструватися" class="btn btn-primary justify-content-center">
+        </div>
+    </form>
+</div>
+</body>
+</html>

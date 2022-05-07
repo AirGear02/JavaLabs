@@ -1,0 +1,29 @@
+body {
+    background-color: #ceeef1;
+    color: #444444;
+}
+
+.main-page-dish {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.paginator {
+    width: 300px;
+    margin: 30px auto;
+}
+
+.orders-tabs {
+    border: 3px solid #0077e5;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.orders-container {
+    width: 80rem;
+}
+
+.order-property-block label {
+    display: block;
+    width: 5rem;
+}

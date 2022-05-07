@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<body>
+<ul th:fragment="orderTabs (status)" class="nav nav-pills nav-fill orders-tabs mt-4">
+    <li class="nav-item">
+        <a aria-current="page"
+           th:class="'nav-link ' + ${status == 'WAITING_APPROVAL' ? 'active' : ''}"
+           href="?status=WAITING_APPROVAL">
+            Очікують підтвердження
+        </a>
+    </li>
+    <li class="nav-item">
+        <a th:class="'nav-link ' + ${status == 'SENT_TO_KITCHEN' ? 'active' : ''}"
+           href="?status=SENT_TO_KITCHEN">
+            В процесі приготування
+        </a>
+    </li>
+    <li class="nav-item">
+        <a th:class="'nav-link ' + ${status == 'COOKED' ? 'active' : ''}"
+           href="?status=COOKED">
+            Приготовано
+        </a>
+    </li>
+    <li class="nav-item">
+        <a th:class="'nav-link ' + ${status == 'WAITING_PAYMENT' ? 'active' : ''}"
+           href="?status=WAITING_PAYMENT">
+            Очікує оплати
+        </a>
+    </li>
+    <li class="nav-item">
+        <a th:class="'nav-link ' + ${status == 'PAID' ? 'active' : ''}"
+           href="?status=PAID">
+            Оплачено
+        </a>
+    </li>
+</ul>
+</body>
+</html>
